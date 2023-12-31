@@ -5,7 +5,7 @@ public class InsertionSort {
         int arr[] = {5,4,3,2,1};
         // 11,12,13,5,6
         int n= arr.length;
-        insertionSort(arr, n);
+        insertionSortRecursive(arr, n);
         show(arr, n);
     }
     public static void insertionSort(int arr[], int n){
@@ -19,6 +19,19 @@ public class InsertionSort {
             arr[j+1]=key;
 
         }
+    }
+    public static void insertionSortRecursive(int arr[], int n){
+        if(n<=1){
+            return;
+        }
+        insertionSort(arr,n-1);
+        int key=arr[n-1];
+        int j=n-2;
+        while(j>=0 && arr[j]>key){
+            arr[j+1]=arr[j];
+            j--;
+        }
+        arr[j+1]=key;
     }
     public static void show(int arr[], int n){
         for(int i=0;i<n;i++){
